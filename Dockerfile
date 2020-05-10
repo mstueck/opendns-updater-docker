@@ -16,19 +16,17 @@ RUN wget https://github.com/ddclient/ddclient/archive/v$ddclient_VERSION.zip -O 
 RUN unzip /tmp/ddclient-$ddclient_VERSION.zip
 
 
-# --- setup the installation and initalise ddclient
+# --- Setup the installation and initalise ddclient
 RUN cp /tmp/ddclient-$ddclient_VERSION/ddclient /usr/bin
 RUN mkdir /etc/ddclient && \
 	mkdir /var/cache/ddclient
 COPY ddclient.conf /etc/ddclient/ddclient.conf
-RUN sed -i 's|#OPENDNSUSERNAME|$OpenDNS_Username|g' /etc/ddclient/ddclient.conf && /
-	sed -i 's|#OPENDNSPASSWORD|$OpenDNS_Password|g' /etc/ddclient/ddclient.conf && /
-	sed -i 's|#OPENDNSNETWORKLABEL|$OpenDNS_Net-Label|g' /etc/ddclient/ddclient.conf
-
 RUN cp /tmp/ddclient-$ddclient_VERSION/sample-etc_rc.d_init.d_ddclient.alpine /etc/init.d/ddclient
-RUN rc-update add ddclient
 
+# --- Add user definitions to configuration file
+COPY entrypoint.sh /entrypoint.sh
 
 # --- start ddclient
+RUN rc-update add ddclient
 RUN rc-service ddclient start
 RUN rc-
