@@ -3,7 +3,7 @@ FROM alpine:latest
 # --- define Docker Environment Variables
 ENV OpenDNS_Username ""
 ENV OpenDNS_Password ""
-ENV OpenDNS_Net-Label ""
+ENV OpenDNS_Net_Label ""
 ENV ddclient_VERSION 3.9.1
 ENV PERL_MM_USE_DEFAULT 1
 
