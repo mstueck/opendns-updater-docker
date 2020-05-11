@@ -9,7 +9,7 @@ ENV PERL_MM_USE_DEFAULT 1
 
 # --- Add the required packages for ddclient to function
 RUN apk update && \
-		apk add wget unzip make perl perl-utils perl-test-taint perl-netaddr-ip perl-net-ip perl-yaml perl-log-log4perl perl-io-socket-ssl openrc nano
+		apk add wget unzip make perl perl-utils perl-test-taint perl-netaddr-ip perl-net-ip perl-yaml perl-log-log4perl perl-io-socket-ssl nano
 RUN cpan Data::Validate::IP
 
 
@@ -29,5 +29,5 @@ RUN cp /tmp/ddclient-$ddclient_VERSION/sample-etc_rc.d_init.d_ddclient.alpine /e
 COPY entrypoint.sh /entrypoint.sh
 
 # --- start ddclient
-RUN rc-update add ddclient
-RUN rc-service ddclient start
+# RUN rc-update add ddclient
+# RUN rc-service ddclient start
