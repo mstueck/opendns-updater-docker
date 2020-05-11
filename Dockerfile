@@ -1,14 +1,16 @@
 FROM alpine:latest
 
 # --- define Docker Environment Variables
-ENV ddclient_VERSION 3.9.1
 ENV OpenDNS_Username ""
 ENV OpenDNS_Password ""
 ENV OpenDNS_Net-Label ""
+ENV ddclient_VERSION 3.9.1
+ENV PERL_MM_USE_DEFAULT 1
 
 # --- Add the required packages for ddclient to function
 RUN apk update && \
 		apk add wget unzip make perl perl-utils perl-test-taint perl-netaddr-ip perl-net-ip perl-yaml perl-log-log4perl perl-io-socket-ssl openrc nano
+RUN cpan Data::Validate::IP
 
 
 # --- Download & Unpack the defined version of ddclient for GitHub
@@ -29,4 +31,3 @@ COPY entrypoint.sh /entrypoint.sh
 # --- start ddclient
 RUN rc-update add ddclient
 RUN rc-service ddclient start
-RUN rc-
