@@ -27,7 +27,8 @@ RUN cp /tmp/ddclient-$ddclient_VERSION/sample-etc_rc.d_init.d_ddclient.alpine /e
 
 # --- Add user definitions to configuration file
 COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
 # --- start ddclient
-# RUN rc-update add ddclient
-# RUN rc-service ddclient start
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["ddclient", "-daemon 600", "-verbose"]
