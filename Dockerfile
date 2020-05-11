@@ -13,7 +13,7 @@ RUN apk update && \
 
 # --- Download & Unpack the defined version of ddclient for GitHub
 RUN wget https://github.com/ddclient/ddclient/archive/v$ddclient_VERSION.zip -O /tmp/ddclient-$ddclient_VERSION.zip
-RUN unzip /tmp/ddclient-$ddclient_VERSION.zip
+RUN unzip /tmp/ddclient-$ddclient_VERSION.zip -d /tmp
 
 
 # --- Setup the installation and initalise ddclient
