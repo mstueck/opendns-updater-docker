@@ -31,4 +31,4 @@ RUN chmod +x /entrypoint.sh
 
 # --- start ddclient
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ["ddclient", "-daemon 600", "-verbose"]
+CMD ["ddclient", "-daemon=600", "-verbose"]
