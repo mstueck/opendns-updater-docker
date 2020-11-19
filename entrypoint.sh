@@ -2,10 +2,6 @@
 
 set -e
 
-sed -i 's|#OPENDNSUSERNAME|'"$OpenDNS_Username"'|g' /etc/ddclient/ddclient.conf
-
-sed -i 's|#OPENDNSPASSWORD|'"$OpenDNS_Password"'|g' /etc/ddclient/ddclient.conf
-
-sed -i 's|#OPENDNSNETWORKLABEL|'"$OpenDNS_Net_Label"'|g' /etc/ddclient/ddclient.conf
+curl --user "$OpenDNS_Username:$OpenDNS_Password" "https://@updates.opendns.com/nic/update?hostname=$OpenDNS_Net_Label" &>/dev/null
 
 exec "$@"
