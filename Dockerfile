@@ -15,3 +15,4 @@ RUN chmod +x /entrypoint.sh
 
 # --- start ddclient
 ENTRYPOINT ["/entrypoint.sh"]
+CMD ["/bin/sh"]
