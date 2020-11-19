@@ -1,6 +1,7 @@
 FROM alpine:latest
 
 # --- define Docker Environment Variables
+ENV previousPubIP "0.0.0.0"
 ENV OpenDNS_Username ""
 ENV OpenDNS_Password ""
 ENV OpenDNS_Net_Label ""
