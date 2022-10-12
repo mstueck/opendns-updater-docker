@@ -1,6 +1,6 @@
 #!/bin/sh
 
-currentPubIP=$(curl -s https://diagnostic.opendns.com/myip)
+currentPubIP=$(curl -s https://myip.dnsomatic.com)
 previousPubIP=$currentPubIP
 
 echo $currentPubIP 1>/dev/stdout
